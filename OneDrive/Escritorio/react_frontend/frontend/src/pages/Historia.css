@@ -1,0 +1,420 @@
+/* ============================================================
+   Historia.css — prefijo hi- para evitar conflictos
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Cinzel+Decorative:wght@400;700;900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
+/* ── Reset base ── */
+.hi-page * { box-sizing: border-box; padding: 0; margin: 0; }
+.hi-page { font-family: 'Poppins', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+.hi-navbar {
+  position: fixed; top: 0; width: 100%;
+  padding: 20px 50px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: transparent; transition: .3s; z-index: 1000;
+}
+.hi-navbar.scrolled { background: rgba(0,0,0,.85); backdrop-filter: blur(8px); }
+
+.hi-logo-nav img { height: 70px; width: auto; }
+
+.hi-nav-menu { display: flex; gap: 30px; list-style: none; }
+.hi-nav-menu li a {
+  color: #fff; text-decoration: none; font-size: 16px; font-weight: 500;
+  position: relative; transition: color .3s;
+}
+.hi-nav-menu li a::after {
+  content: ''; position: absolute; bottom: -5px; left: 0;
+  height: 2px; width: 100%; background: #fff;
+  transform: scaleX(0); transform-origin: left; transition: transform .3s;
+}
+.hi-nav-menu li a:hover::after { transform: scaleX(1); }
+
+.hi-nav-actions { display: flex; align-items: center; gap: 15px; }
+.hi-nav-icon { color: #fff; text-decoration: none; }
+.hi-nav-icon i { font-size: 24px; }
+
+/* User menu */
+.hi-user-menu { position: relative; }
+.hi-profile-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  overflow: hidden; cursor: pointer; border: 2px solid #fff;
+}
+.hi-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.hi-dropdown {
+  position: absolute; top: 50px; right: 0; min-width: 200px;
+  background: rgba(20,20,20,.97); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px; padding: 8px 0; z-index: 2000;
+  backdrop-filter: blur(10px); animation: hiDropIn .2s ease;
+}
+@keyframes hiDropIn { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
+.hi-dropdown a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 18px; color: #fff; text-decoration: none;
+  font-size: 14px; transition: background .2s;
+}
+.hi-dropdown a:hover { background: rgba(255,255,255,.1); }
+
+/* Hamburger */
+.hi-hamburger { display: none; font-size: 28px; cursor: pointer; color: #fff; z-index: 1100; }
+
+/* ================================================================
+   MODAL
+   ================================================================ */
+.hi-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.6);
+  display: flex; align-items: center; justify-content: center; z-index: 9999;
+}
+.hi-modal {
+  background: #111; border: 1px solid rgba(255,255,255,.2); border-radius: 12px;
+  padding: 35px 30px; max-width: 400px; width: 90%; position: relative;
+}
+.hi-modal h3 { margin-bottom: 12px; font-size: 22px; }
+.hi-modal p { color: #ccc; margin-bottom: 24px; }
+.hi-modal-close { position: absolute; top: 14px; right: 18px; font-size: 22px; cursor: pointer; }
+.hi-modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+.hi-btn-cancel { padding: 10px 20px; background: transparent; border: 1px solid #fff; color: #fff; border-radius: 8px; cursor: pointer; }
+.hi-btn-logout { padding: 10px 20px; background: #c0392b; border: none; color: #fff; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+
+/* ================================================================
+   HERO SECTION — AÑO GIGANTE
+   ================================================================ */
+.hi-historia-section {
+  position: relative;
+  padding: 120px 5% 100px;
+  color: #fff; overflow: hidden; text-align: center;
+  transition: opacity .3s ease;
+}
+.hi-historia-section.transitioning { opacity: .4; }
+
+.hi-subtitulo {
+  font-size: 34px; font-family: 'Aboreto', sans-serif;
+  font-weight: 300; letter-spacing: 3px; margin-bottom: -10px;
+}
+.hi-ano {
+  font-family: 'Aboreto', serif;
+  font-size: 480px; font-weight: 400; line-height: 1;
+  color: #fff; position: relative; z-index: 1;
+  user-select: none;
+}
+
+/* Imágenes superpuestas — clases originales del CSS de Django preservadas */
+.hi-hist-img { position: absolute; z-index: 2; }
+
+/* Clases de posición EXACTAS del historia.css original */
+.img-izquierda    { top:59%; left:26%; width:160px; transform:translateY(-50%) rotate(12deg); }
+.img-derecha      { top:47%; right:20%; width:250px; transform:translateY(-50%) rotate(-7deg); }
+.img-derecha_1601 { top:50%; right:30%; width:400px; transform:translateY(-50%) rotate(-1deg); }
+.img-izquierda_1701,.img-izquierda_1885 { top:62%; left:14%; width:285px; transform:translateY(-50%) rotate(-1deg); }
+.img-derecha_1701,.img-derecha_1855     { top:54%; right:20%; width:300px; transform:translateY(-50%) rotate(2.5deg); }
+.img-izquierda_1801 { top:56%; left:12%; width:300px; transform:translateY(-50%) rotate(-1deg); }
+.img-derecha_1801   { top:51.5%; right:11.5%; width:450px; transform:translateY(-50%) rotate(2deg); }
+.img-izquierda_1937 { top:58%; left:58%; width:380px; transform:translateY(-50%) rotate(-1deg); z-index:3; }
+.img-derecha_1937   { top:47%; right:4.5%; width:280px; transform:translateY(-50%) rotate(2.5deg); z-index:2; }
+.img-derecha_1983   { top:50%; right:10%; width:1050px; transform:translateY(-50%) rotate(0); z-index:2; }
+
+/* ── Timeline ── */
+.hi-timeline { margin-top: 20px; position: relative; }
+.hi-timeline ul {
+  display: flex; justify-content: space-between; align-items: center;
+  list-style: none; position: relative; padding: 0;
+}
+.hi-timeline ul::before {
+  content: ''; position: absolute; top: 10px; left: 115px; right: 0;
+  height: 3px; background: #fff; opacity: .15; z-index: 0;
+}
+.hi-timeline li { position: relative; text-align: center; flex: 1; }
+
+.dot         { display:inline-block; width:14px; height:14px; border-radius:50%; background:#fff; position:relative; z-index:1; }
+.dot-va      { display:inline-block; width:9px; height:9px; border-radius:50%; background:#fff; top:-5px; left:-1px; border:2px solid #fff; position:relative; z-index:1; }
+.dot-va2     { display:inline-block; width:22px; height:22px; border-radius:50%; background:#000; border:2px solid #fff; position:relative; transform:translateY(1px) translateX(-20px); z-index:-1; }
+
+.year,.year_a {
+  display:block; margin-top:15px; font-size:18px; font-weight:400;
+  font-family:'Aboreto',sans-serif; text-align:center;
+}
+.year   { width:100%; }
+.year_a { width:90%; }
+.year.active  { color:#fff; font-weight:700; }
+.year_a.clickable { transition: color .2s, transform .2s; }
+.year_a.clickable:hover { color: rgba(255,255,255,.75); transform: scale(1.05); }
+
+/* ================================================================
+   SECCIÓN DETALLE / CONTENIDO
+   ================================================================ */
+.hi-detalle {
+  position: relative; background: #000; color: #fff;
+  padding: 100px 10% 120px; overflow: hidden;
+}
+.hi-bg {
+  position: absolute; top: 50%; left: 50%; width: 70%; height: 70%;
+  background-image: url('/img/degradado.png');
+  background-size: contain; background-repeat: no-repeat;
+  transform: translate(-50%,-50%); background-position: center; z-index: 1;
+}
+.hi-contenido {
+  position: relative; z-index: 2; max-width: 850px; margin: 0 auto; text-align: left;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.hi-contenido.fade-out { opacity: 0; transform: translateY(10px); }
+.hi-contenido.fade-in  { opacity: 1; transform: translateY(0); }
+.hi-contenido h2 { font-size: 28px; margin-bottom: 25px; }
+.hi-contenido p  { font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
+
+/* Flechas */
+.hi-flechas { position: absolute; top: 20px; right: 40px; z-index: 3; display: flex; gap: 15px; }
+.hi-flecha {
+  background: transparent; border: 2px solid #fff; color: #fff;
+  font-size: 22px; border-radius: 50%; width: 45px; height: 45px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: .3s;
+}
+.hi-flecha:hover  { background: #fff; color: #000; }
+.hi-flecha:disabled { opacity: .3; cursor: not-allowed; }
+.hi-flecha:disabled:hover { background: transparent; color: #fff; }
+
+/* ================================================================
+   PERSONAJES DESTACADOS
+   ================================================================ */
+.hi-personajes { background: #000; padding: 90px 10% 80px; color: #fff; }
+
+.hi-titulo-personajes {
+  text-align: center; font-size: 40px; margin-bottom: 60px;
+  font-family: 'Poppins', sans-serif; font-weight: 500;
+}
+.hi-titulo-personajes span { display: inline-block; width: 200px; height: 2px; background: #fff; vertical-align: middle; margin: 0 15px; }
+
+.hi-personaje-card {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 40px;
+}
+.hi-personaje-card.izquierda { flex-direction: row-reverse; text-align: right; }
+
+.hi-personaje-imagen { position: relative; width: 250px; height: 250px; flex-shrink: 0; }
+
+/* Todas las clases img-fondo/img-sobre del CSS original */
+.img-fondo11,.img-fondo12,.img-fondo13,
+.img-fondo21,.img-fondo22,.img-fondo23,
+.img-fondo31,.img-fondo32,.img-fondo33,
+.img-fondo41,.img-fondo42,.img-fondo43,
+.img-fondo51,.img-fondo52,.img-fondo53 {
+  width:100%; height:100%; object-fit:cover; border-radius:20px;
+}
+.img-sobre11,.img-sobre12,.img-sobre13 {
+  position:absolute; bottom:-3px; left:50%; transform:translateX(-50%); width:80%; z-index:2;
+}
+.img-sobre21,.img-sobre22,.img-sobre23 {
+  position:absolute; bottom:-3px; left:50%; transform:translateX(-50%); width:90%; z-index:2;
+}
+.img-sobre31,.img-sobre32,.img-sobre33,
+.img-sobre41,.img-sobre42,.img-sobre43,
+.img-sobre51,.img-sobre52,.img-sobre53 {
+  position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:85%; z-index:2;
+}
+
+.hi-personaje-info { max-width: 800px; }
+.hi-personaje-fecha { font-size: 20px; color: #ccc; display: block; margin-bottom: 5px; }
+.hi-personaje-info h3 { font-size: 35px; margin-bottom: 10px; font-weight: 500; }
+.hi-personaje-info p  { font-size: 20px; line-height: 1.7; color: #ddd; }
+
+/* ================================================================
+   DATOS CURIOSOS
+   ================================================================ */
+.hi-datos-curiosos { background: #000; padding: 80px 10%; color: #fff; text-align: center; }
+
+.hi-datos-titulo {
+  font-size: 35px; margin-bottom: 50px;
+  display: flex; justify-content: center; align-items: center; gap: 20px;
+  font-weight: 500; font-family: 'Poppins', serif;
+}
+.hi-datos-titulo span { display: inline-block; width: 9cm; height: 2px; background: #fff; }
+
+.hi-datos-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 80px;
+}
+.hi-dato-card {
+  background: #000; padding: 30px 20px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.15); position: relative;
+  width: 400px; z-index: 0; margin-left: 30px;
+}
+.hi-dato-card p { font-size: 15px; line-height: 1.7; text-align: left; }
+.hi-decoracion-card { width: 420px; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); z-index: 1; }
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.hi-footer {
+  background-color: #0a0a0a;
+  background-image: url('/img/home/fondo_footer.png');
+  background-repeat: no-repeat; background-position: center 100px; background-size: 85%;
+  color: #fff; padding: 50px 0 20px; position: relative; z-index: 1; overflow: hidden;
+}
+.hi-footer::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.95); z-index: -1; }
+.hi-footer-content { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+.hi-logo-section { margin-bottom: 50px; position: relative; text-align: center; }
+.hi-linea-horizontal { position: absolute; top: 50%; width: 100%; height: 1px; background: rgba(255,255,255,.3); z-index: 0; }
+.hi-logo-footer { width: 140px; height: 140px; margin: 0 auto; border-radius: 50%; background: #000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,.5); position: relative; z-index: 1; }
+.hi-logo-footer img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+
+.hi-footer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 40px; padding: 0 20px; }
+.hi-footer-section h3 { text-align: center; color: #fff; margin-bottom: 20px; font-size: 20px; font-weight: 600; border-bottom: 2px solid #fff; padding-bottom: 8px; }
+.hi-footer-section ul { list-style: none; padding: 0; margin: 0; }
+.hi-footer-section ul li { color: #ccc; margin-bottom: 12px; font-size: 15px; line-height: 1.6; }
+.hi-footer-section ul li a { color: #ccc; text-decoration: none; transition: color .3s; }
+.hi-footer-section ul li a:hover { color: #fff; }
+
+.hi-social-icons { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.hi-social-icons li { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.hi-social-icons i  { color: #fff; font-size: 18px; width: 20px; }
+
+.hi-footer-bottom { text-align: center; color: #ccc; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.2); font-size: 14px; }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .hi-navbar { padding: 20px 30px; }
+  .hi-ano { font-size: 320px; }
+  .img-izquierda    { width: 130px; left: 15%; }
+  .img-derecha      { width: 200px; right: 15%; }
+  .img-derecha_1601 { width: 320px; right: 20%; }
+  .img-izquierda_1701,.img-derecha_1701 { width: 240px; }
+  .img-izquierda_1801 { width: 250px; }
+  .img-derecha_1801   { width: 380px; }
+  .img-izquierda_1937 { width: 300px; left: 50%; }
+  .img-derecha_1983   { width: 850px; }
+  .hi-detalle { padding: 80px 7% 100px; }
+  .hi-flechas { top: 15px; right: 30px; }
+  .hi-personaje-info { max-width: 550px; }
+  .hi-datos-grid { grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); gap: 60px; }
+  .hi-dato-card { width: 350px; }
+  .hi-decoracion-card { width: 370px; }
+}
+
+@media (max-width: 900px) {
+  .hi-hamburger { display: block; }
+  .hi-nav-menu {
+    position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+    background: rgba(0,0,0,.98); backdrop-filter: blur(10px);
+    flex-direction: column; padding: 100px 30px 30px; gap: 20px;
+    transition: right .4s cubic-bezier(.68,-.55,.265,1.55);
+    overflow-y: auto; box-shadow: -5px 0 15px rgba(0,0,0,.5);
+  }
+  .hi-nav-menu.active { right: 0; }
+  .hi-nav-menu li a { font-size: 18px; padding: 12px 0; display: block; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .hi-nav-menu li a::after { display: none; }
+}
+
+@media (max-width: 768px) {
+  .hi-navbar { padding: 15px 25px; }
+  .hi-logo-nav img { height: 60px; }
+  .hi-subtitulo { font-size: 24px; }
+  .hi-ano { font-size: 200px; margin: 20px 0; }
+  .img-izquierda    { width: 100px; left: 10%; top: 55%; }
+  .img-derecha      { width: 140px; right: 10%; top: 45%; }
+  .img-derecha_1601 { width: 250px; right: 15%; top: 48%; }
+  .img-izquierda_1701 { width: 180px; left: 8%; top: 60%; }
+  .img-derecha_1701   { width: 200px; right: 10%; }
+  .img-izquierda_1801 { width: 180px; left: 8%; }
+  .img-derecha_1801   { width: 280px; right: 8%; }
+  .img-izquierda_1885 { width: 180px; }
+  .img-derecha_1855   { width: 200px; }
+  .img-izquierda_1937 { width: 240px; left: 55%; top: 55%; }
+  .img-derecha_1937   { width: 180px; right: 2%; }
+  .img-derecha_1983   { width: 550px; right: 5%; }
+  .hi-timeline ul::before { left: 80px; }
+  .year,.year_a { font-size: 14px; margin-top: 10px; }
+  .hi-detalle { padding: 60px 5% 80px; }
+  .hi-contenido p { font-size: 15px; }
+  .hi-flechas { top: 10px; right: 20px; gap: 10px; }
+  .hi-flecha  { width: 40px; height: 40px; font-size: 18px; }
+  .hi-personajes,.hi-datos-curiosos { padding: 60px 5%; }
+  .hi-titulo-personajes { font-size: 28px; margin-bottom: 40px; }
+  .hi-titulo-personajes span { width: 80px; }
+  .hi-personaje-card,
+  .hi-personaje-card.izquierda { flex-direction: column !important; text-align: center !important; }
+  .hi-personaje-imagen { margin: 0 auto; }
+  .hi-personaje-info { max-width: 100%; }
+  .hi-personaje-info h3 { font-size: 28px; }
+  .hi-personaje-info p  { font-size: 16px; }
+  .hi-datos-titulo { font-size: 26px; margin-bottom: 40px; gap: 15px; }
+  .hi-datos-titulo span { width: 60px; }
+  .hi-datos-grid { grid-template-columns: 1fr; gap: 50px; justify-items: center; }
+  .hi-dato-card { width: 100%; max-width: 400px; margin-left: 0; }
+  .hi-decoracion-card { width: 110%; max-width: 450px; }
+  .hi-footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .hi-footer-section { text-align: center; }
+  .hi-logo-footer,.hi-logo-footer img { width: 130px; height: 130px; }
+}
+
+@media (max-width: 480px) {
+  .hi-navbar { padding: 15px 20px; }
+  .hi-logo-nav img { height: 45px; }
+  .hi-subtitulo { font-size: 18px; letter-spacing: 1px; }
+  .hi-ano { font-size: 120px; margin: 15px 0; }
+  .img-izquierda    { width: 70px; left: 5%; top: 52%; }
+  .img-derecha      { width: 100px; right: 5%; top: 48%; }
+  .img-derecha_1601 { width: 180px; right: 10%; top: 50%; }
+  .img-izquierda_1701 { width: 120px; left: 5%; top: 58%; }
+  .img-derecha_1701   { width: 140px; right: 5%; top: 52%; }
+  .img-izquierda_1801 { width: 130px; left: 5%; top: 54%; }
+  .img-derecha_1801   { width: 200px; right: 5%; top: 50%; }
+  .img-izquierda_1885 { width: 120px; left: 5%; }
+  .img-derecha_1855   { width: 140px; right: 5%; }
+  .img-izquierda_1937 { width: 170px; left: 52%; top: 53%; }
+  .img-derecha_1937   { width: 120px; right: 1%; top: 48%; }
+  .img-derecha_1983   { width: 350px; right: 2%; top: 48%; }
+  .hi-timeline ul { padding: 0 10px; }
+  .hi-timeline ul::before { left: 50px; }
+  .year,.year_a { font-size: 11px; margin-top: 8px; }
+  .dot { width: 10px; height: 10px; }
+  .dot-va  { width: 7px; height: 7px; }
+  .dot-va2 { width: 16px; height: 16px; }
+  .hi-detalle { padding: 50px 5% 60px; }
+  .hi-bg { width: 90%; height: 60%; }
+  .hi-contenido h2 { font-size: 20px; margin-bottom: 20px; }
+  .hi-contenido p,.hi-personaje-info p { font-size: 14px; line-height: 1.6; }
+  .hi-flechas { top: 5px; right: 10px; gap: 8px; }
+  .hi-flecha  { width: 35px; height: 35px; font-size: 16px; border-width: 1.5px; }
+  .hi-personajes,.hi-datos-curiosos { padding: 50px 5%; }
+  .hi-titulo-personajes { font-size: 22px; margin-bottom: 35px; }
+  .hi-titulo-personajes span { width: 50px; margin: 0 10px; }
+  .hi-personaje-imagen { width: 200px; height: 200px; }
+  .hi-personaje-fecha { font-size: 16px; }
+  .hi-personaje-info h3 { font-size: 22px; }
+  .img-sobre11,.img-sobre12,.img-sobre13,
+  .img-sobre21,.img-sobre22,.img-sobre23,
+  .img-sobre31,.img-sobre32,.img-sobre33,
+  .img-sobre41,.img-sobre42,.img-sobre43,
+  .img-sobre51,.img-sobre52,.img-sobre53 { width: 80%; left: 50%; transform: translateX(-50%); }
+  .hi-datos-titulo { font-size: 20px; margin-bottom: 30px; flex-direction: column; gap: 10px; }
+  .hi-datos-titulo span { width: 150px; }
+  .hi-dato-card { padding: 25px 15px; width: 100%; max-width: 320px; }
+  .hi-dato-card p { font-size: 13px; }
+  .hi-decoracion-card { width: 115%; max-width: 350px; bottom: -15px; }
+  .hi-footer { padding: 25px 0 15px; }
+  .hi-footer-content { padding: 10px 20px; }
+  .hi-logo-footer,.hi-logo-footer img { width: 110px; height: 110px; }
+  .hi-footer-section h3 { font-size: 14px; }
+  .hi-footer-section ul li { font-size: 12px; }
+  .hi-footer-bottom { font-size: 12px; margin-top: 15px; }
+}
+
+@media (max-width: 360px) {
+  .hi-ano { font-size: 90px; }
+  .hi-subtitulo { font-size: 16px; }
+  .img-izquierda  { width: 60px; }
+  .img-derecha    { width: 85px; }
+  .img-derecha_1601 { width: 150px; }
+  .img-derecha_1983 { width: 280px; }
+  .year,.year_a { font-size: 10px; }
+  .hi-datos-titulo,.hi-contenido h2 { font-size: 18px; }
+  .hi-contenido p { font-size: 13px; }
+  .hi-personaje-info h3,.hi-titulo-personajes { font-size: 20px; }
+  .hi-dato-card { max-width: 280px; padding: 20px 12px; }
+  .hi-decoracion-card { max-width: 300px; }
+}

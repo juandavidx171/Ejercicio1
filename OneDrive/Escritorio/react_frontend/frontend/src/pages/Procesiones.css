@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; overflow-x: hidden; color: white; background: black; }
+a { color: inherit; text-decoration: none; }
+
+/* ── NAVBAR ── */
+.pr-navbar {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 50px; background: transparent; transition: background 0.3s;
+}
+.pr-navbar.scrolled { background: rgba(0,0,0,0.85); }
+.pr-logo-nav img { height: 70px; width: auto; }
+.pr-nav-menu { display: flex; gap: 30px; list-style: none; }
+.pr-nav-menu li a { color: white; font-size: 16px; font-weight: 500; position: relative; transition: color 0.3s; }
+.pr-nav-menu li a::after { content:""; position:absolute; bottom:-5px; left:0; height:2px; width:100%; background:white; transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+.pr-nav-menu li a:hover::after { transform: scaleX(1); }
+.pr-nav-actions { display: flex; align-items: center; gap: 15px; }
+.pr-profile-avatar { width:45px; height:45px; border-radius:50%; overflow:hidden; border:2px solid rgba(255,255,255,0.3); cursor:pointer; transition: border-color 0.3s, transform 0.3s; }
+.pr-profile-avatar:hover { border-color: rgba(255,255,255,0.6); transform: scale(1.1); }
+.pr-profile-avatar img { width:100%; height:100%; object-fit:cover; }
+.pr-icon-login { color:white; font-size:24px; }
+.pr-hamburger { display:none; background:transparent; border:none; color:white; font-size:24px; cursor:pointer; }
+.pr-dropdown { position:absolute; top:55px; right:0; background:rgba(0,0,0,0.95); min-width:220px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); box-shadow:0 8px 16px rgba(0,0,0,0.3); z-index:2000; overflow:hidden; }
+.pr-dropdown a, .pr-dropdown button { display:flex; align-items:center; gap:10px; padding:12px 16px; color:white; font-size:14px; border-bottom:1px solid rgba(255,255,255,0.1); background:transparent; border-left:none; border-right:none; border-top:none; width:100%; text-align:left; cursor:pointer; font-family:'Poppins',sans-serif; }
+.pr-dropdown a:hover, .pr-dropdown button:hover { background: rgba(255,255,255,0.1); }
+
+/* ── MODAL LOGOUT ── */
+.pr-modal-overlay { position:fixed; inset:0; z-index:3000; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; }
+.pr-modal-box { background:#fff; border-radius:10px; padding:30px; width:90%; max-width:500px; position:relative; color:#333; }
+.pr-modal-close { position:absolute; top:10px; right:15px; font-size:28px; background:transparent; border:none; cursor:pointer; color:#aaa; }
+.pr-modal-box h3 { font-size:22px; margin-bottom:12px; }
+.pr-modal-box p  { color:#666; margin-bottom:24px; }
+.pr-modal-actions { display:flex; justify-content:flex-end; gap:10px; }
+.pr-btn-cancel  { background:#6c757d; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; font-family:'Poppins',sans-serif; }
+.pr-btn-confirm { background:#dc3545; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; display:flex; align-items:center; gap:8px; font-family:'Poppins',sans-serif; }
+
+/* ── HEADER ── */
+.pr-header { background:black; padding: 130px 0 80px; }
+.pr-container { max-width:1200px; margin:0 auto; padding:0 20px; }
+.pr-header-content { position:relative; z-index:2; }
+.pr-header-title { font-size:3.5rem; font-weight:300; margin-bottom:20px; letter-spacing:-1px; }
+.pr-header-dis { display:flex; gap:40px; align-items:center; }
+.pr-header-subtitle { font-size:18px; color:#ccc; max-width:600px; line-height:1.7; }
+.pr-header-img { width:20%; height:auto; object-fit:contain; }
+
+/* ── TABS ── */
+.pr-days-nav { display:flex; justify-content:center; gap:10px; margin:40px 0; flex-wrap:wrap; }
+.pr-day-tab { background:black; border:1px solid rgba(255,255,255,0.15); padding:12px 24px; border-radius:25px; color:#ccc; cursor:pointer; transition:all 0.3s; font-size:14px; text-transform:uppercase; letter-spacing:1px; font-family:'Poppins',sans-serif; }
+.pr-day-tab:hover, .pr-day-tab.active { border-color:rgba(255,255,255,0.4); color:#fff; transform:translateY(-2px); }
+
+/* ── MAIN ── */
+.pr-main { padding:60px 0; }
+
+/* Cabecera del día */
+.pr-day-header { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:40px; margin-bottom:40px; text-align:center; animation:prFadeIn 0.5s ease; }
+.pr-day-title { font-size:3.5rem; font-weight:300; margin-bottom:15px; }
+.pr-day-subtitle { font-size:18px; color:#aaa; margin-bottom:25px; }
+.pr-day-meta { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; }
+.pr-meta-item { display:flex; align-items:center; gap:8px; font-size:14px; color:#ccc; }
+.pr-meta-item i { opacity:0.7; }
+
+/* Descripción */
+.pr-day-desc { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:40px; margin-bottom:50px; animation:prFadeIn 0.5s ease; }
+.pr-section-title { font-size:24px; font-weight:400; margin-bottom:20px; color:#fff; }
+.pr-day-desc p { color:#ccc; font-size:16px; line-height:1.7; margin-bottom:20px; }
+.pr-day-desc p:last-child { margin-bottom:0; }
+
+/* ── PASOS ── */
+.pr-pasos-container { margin-bottom:50px; }
+.pr-pasos-grid { display:flex; flex-direction:column; gap:30px; margin-top:30px; }
+
+.pr-paso-card { display:flex; flex-direction:row; background:rgba(15,15,15,0.8); border:1px solid rgba(255,255,255,0.12); border-radius:20px; overflow:hidden; transition:all 0.4s ease; min-height:350px; animation:prFadeIn 0.5s ease; }
+.pr-paso-card:hover { transform:translateX(10px); border-color:rgba(255,255,255,0.25); box-shadow:-10px 10px 40px rgba(0,0,0,0.6); }
+
+.pr-paso-header { position:relative; width:380px; min-width:380px; flex-shrink:0; background:#0a0a0a; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:25px; }
+.pr-paso-img { width:100%; height:100%; max-height:320px; object-fit:contain; object-position:center; transition:transform 0.6s ease; }
+.pr-paso-card:hover .pr-paso-img { transform:scale(1.03); }
+.pr-paso-number { position:absolute; bottom:20px; right:20px; background:rgba(255,255,255,0.95); color:#000; width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:800; z-index:10; box-shadow:0 4px 20px rgba(0,0,0,0.5); }
+
+.pr-paso-content { flex:1; padding:40px 45px; display:flex; flex-direction:column; justify-content:space-between; }
+.pr-paso-title { font-size:26px; font-weight:700; margin-bottom:15px; color:#fff; line-height:1.2; }
+.pr-paso-desc  { color:#c5c5c5; line-height:1.8; font-size:15px; flex-grow:1; padding-right:20px; margin-bottom:auto; }
+.pr-paso-details { display:flex; gap:30px; padding-top:25px; border-top:2px solid rgba(255,255,255,0.1); margin-top:20px; flex-wrap:wrap; }
+.pr-paso-detail { display:flex; flex-direction:column; }
+.pr-detail-label { color:#888; font-size:11px; text-transform:uppercase; letter-spacing:1.2px; font-weight:600; margin-bottom:6px; }
+.pr-detail-value { color:#fff; font-weight:700; font-size:16px; }
+
+/* ── MAPA ── */
+.pr-mapa-section { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:40px; margin-bottom:50px; animation:prFadeIn 0.5s ease; }
+.pr-mapa-header { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:start; margin-bottom:30px; }
+.pr-mapa-info h3 { font-size:24px; font-weight:400; color:#fff; margin-bottom:15px; }
+.pr-mapa-info p  { color:#aaa; line-height:1.6; }
+.pr-mapa-stats { display:flex; flex-direction:column; gap:15px; min-width:200px; }
+.pr-stat-item  { background:rgba(255,255,255,0.05); padding:15px; border-radius:8px; text-align:center; }
+.pr-stat-num   { display:block; font-size:24px; font-weight:600; color:#fff; margin-bottom:5px; }
+.pr-stat-lbl   { font-size:12px; color:#888; text-transform:uppercase; letter-spacing:1px; }
+.pr-mapa-container { width:100%; height:400px; border-radius:8px; overflow:hidden; margin-bottom:30px; }
+.pr-mapa-container iframe { width:100%; height:100%; border:0; }
+
+/* ── PUNTOS ── */
+.pr-puntos-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
+.pr-punto-card  { background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; border-left:3px solid rgba(255,255,255,0.2); }
+.pr-punto-title { font-size:16px; font-weight:500; color:#fff; margin-bottom:8px; }
+.pr-punto-time  { font-size:14px; color:#888; margin-bottom:5px; }
+.pr-punto-desc  { font-size:14px; color:#aaa; line-height:1.5; }
+
+/* ── FOOTER ── */
+.pr-footer { background:#0a0a0a; color:white; padding:50px 0 20px; }
+.pr-footer-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
+.pr-footer-logo-wrap { text-align:center; margin-bottom:50px; position:relative; }
+.pr-footer-logo-line { position:absolute; top:50%; width:100%; height:1px; background:rgba(255,255,255,0.3); }
+.pr-footer-logo-circle { width:140px; height:140px; margin:0 auto; border-radius:50%; background:#000; display:flex; align-items:center; justify-content:center; position:relative; z-index:1; box-shadow:0 4px 20px rgba(0,0,0,0.5); }
+.pr-footer-logo-circle img { width:100%; height:100%; object-fit:contain; border-radius:50%; }
+.pr-footer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:40px; padding:0 20px; }
+.pr-footer-section { text-align:center; }
+.pr-footer-section h3 { color:white; font-size:20px; font-weight:600; border-bottom:2px solid white; display:inline-block; padding-bottom:8px; margin-bottom:20px; }
+.pr-footer-section ul { list-style:none; padding:0; }
+.pr-footer-section li { margin-bottom:12px; color:#ccc; font-size:15px; line-height:1.6; }
+.pr-footer-section a { color:#ccc; }
+.pr-footer-section a:hover { color:white; }
+.pr-social-item { display:flex; align-items:center; justify-content:center; gap:10px; }
+.pr-social-item i { color:white; font-size:18px; }
+.pr-footer-bottom { text-align:center; color:#ccc; margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.2); font-size:14px; }
+
+/* ── ANIMACIÓN ── */
+@keyframes prFadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 968px) {
+  .pr-paso-card   { flex-direction:column; min-height:auto; }
+  .pr-paso-header { width:100%; min-width:auto; height:300px; }
+  .pr-paso-number { top:20px; right:20px; bottom:auto; }
+}
+@media (max-width: 768px) {
+  .pr-navbar { padding:10px 20px; }
+  .pr-nav-menu { display:none; position:absolute; top:80px; right:20px; background:rgba(0,0,0,0.95); flex-direction:column; gap:20px; padding:20px; border-radius:10px; }
+  .pr-hamburger { display:block !important; }
+  .pr-header { padding:110px 0 60px; }
+  .pr-header-dis { flex-direction:column; }
+  .pr-header-img { width:60%; align-self:center; }
+  .pr-days-nav { flex-direction:column; align-items:center; }
+  .pr-day-meta { flex-direction:column; gap:15px; align-items:center; }
+  .pr-paso-header { height:250px; }
+  .pr-paso-content { padding:25px; }
+  .pr-paso-title { font-size:22px; }
+  .pr-paso-desc  { padding-right:0; }
+  .pr-paso-details { flex-direction:column; gap:15px; }
+  .pr-mapa-header { grid-template-columns:1fr; }
+  .pr-mapa-stats  { flex-direction:row; justify-content:space-between; }
+  .pr-puntos-grid { grid-template-columns:1fr; }
+  .pr-footer-grid { grid-template-columns:1fr; }
+  .pr-footer-inner { padding:0 20px; }
+}
+@media (max-width: 992px) {
+  .pr-footer-grid { grid-template-columns:repeat(2,1fr); }
+}

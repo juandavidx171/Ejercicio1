@@ -1,0 +1,148 @@
+/* ============================================================
+   Popares.css — prefijo po-
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.po-page * { box-sizing: border-box; margin: 0; padding: 0; }
+.po-page {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('/img/juego/fondo.jpg');
+  background-size: cover; background-position: center;
+  background-repeat: no-repeat; min-height: 100vh;
+  color: #fff; overflow-x: hidden;
+}
+.po-page::before {
+  content: ''; position: fixed; inset: 0;
+  background: rgba(0,0,0,.3); z-index: 0;
+}
+
+/* ── NAVBAR ── */
+.po-navbar {
+  position: fixed; top: 0; width: 100%;
+  padding: 20px 50px; display: flex; justify-content: space-between; align-items: center;
+  background: transparent; transition: .3s; z-index: 1000;
+}
+.po-navbar.scrolled { background: rgba(0,0,0,.85); backdrop-filter: blur(8px); }
+.po-logo-nav img { height: 70px; }
+.po-nav-menu { display: flex; gap: 30px; list-style: none; }
+.po-nav-menu li a { color: #fff; text-decoration: none; font-size: 16px; font-weight: 500; position: relative; transition: color .3s; }
+.po-nav-menu li a::after { content: ''; position: absolute; bottom: -5px; left: 0; height: 2px; width: 100%; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.po-nav-menu li a:hover::after { transform: scaleX(1); }
+.po-nav-actions { display: flex; align-items: center; gap: 15px; }
+.po-hamburger { display: none; font-size: 28px; cursor: pointer; color: #fff; z-index: 1100; }
+
+/* ── MAIN ── */
+.po-main {
+  position: relative; z-index: 1;
+  backdrop-filter: blur(5px);
+  width: 730px; max-width: 95%;
+  margin: 100px auto 50px;
+  display: flex; align-items: flex-start; gap: 0;
+}
+
+/* ── TABLERO ── */
+.po-section1 {
+  background: rgba(255,255,255,.2);
+  padding: 0 10px 10px; border-radius: 8px; width: 100%;
+  position: relative;
+}
+.po-section1 h1 { text-align: center; padding: 10px 0; font-size: 28px; }
+
+.po-table { width: 100%; border-collapse: collapse; }
+.po-table td { padding: 2px; }
+
+.po-card {
+  height: 100px; width: 100px; font-size: 40px; color: #fff; font-weight: bold;
+  border: none; background: rgba(255,255,255,.3);
+  border-radius: 8px; transition: all .3s ease; cursor: pointer;
+  overflow: hidden; padding: 0;
+}
+.po-card:hover:not(:disabled) { background: rgba(255,255,255,.4); transform: scale(1.05); }
+.po-card:disabled { cursor: default; }
+.po-card.matched { background: rgba(100,200,100,.4); }
+.po-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── OVERLAY WIN/LOSE ── */
+.po-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,.7);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; z-index: 10;
+}
+.po-msg-win  { font-size: 1.5rem; color: #4ade80; text-align: center; padding: 20px; }
+.po-msg-lose { font-size: 1.5rem; color: #f87171; text-align: center; padding: 20px; }
+
+/* ── STATS ── */
+.po-section2 {
+  background: rgba(255,255,255,.2);
+  border-top-right-radius: 8px; border-bottom-right-radius: 8px;
+  width: 250px; min-width: 250px; height: auto;
+  margin-left: 50px; padding: 20px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.po-stat {
+  border: 1px solid #fff; min-height: 80px; border-radius: 8px;
+  padding: 8px 20px; display: flex; align-items: center;
+  justify-content: center; text-align: center; font-size: 16px;
+  background: rgba(255,255,255,.05);
+}
+.po-niveles {
+  background: rgba(255,255,255,.1);
+  border-radius: 8px; border: 1px solid #fff;
+}
+.po-btn-volver {
+  margin-top: auto; padding: 12px 20px;
+  background: rgba(255,255,255,.15); border: 1px solid #fff;
+  color: #fff; border-radius: 8px; cursor: pointer;
+  font-size: 15px; transition: background .3s; font-family: 'Poppins', sans-serif;
+}
+.po-btn-volver:hover { background: rgba(255,255,255,.3); }
+
+/* ── FOOTER ── */
+.po-footer {
+  background-color: #0a0a0a; background-image: url('/img/home/fondo_footer.png');
+  background-repeat: no-repeat; background-position: center 100px; background-size: 85%;
+  color: #fff; padding: 50px 0 20px; position: relative; z-index: 1; overflow: hidden;
+}
+.po-footer::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.95); z-index: -1; }
+.po-footer-content { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.po-logo-section { text-align: center; margin-bottom: 50px; position: relative; }
+.po-linea-horizontal { position: absolute; top: 50%; width: 100%; height: 1px; background: rgba(255,255,255,.3); z-index: 0; }
+.po-logo-footer { width: 140px; height: 140px; margin: 0 auto; border-radius: 50%; background: #000; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+.po-logo-footer img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+.po-footer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 40px; padding: 0 20px; }
+.po-footer-section { text-align: center; }
+.po-footer-section h3 { color: #fff; margin-bottom: 20px; font-size: 20px; font-weight: 600; border-bottom: 2px solid #fff; display: inline-block; padding-bottom: 8px; }
+.po-footer-section ul { list-style: none; padding: 0; }
+.po-footer-section ul li { color: #ccc; margin-bottom: 12px; font-size: 15px; }
+.po-footer-section ul li a { text-decoration: none; color: #ccc; transition: color .3s; }
+.po-footer-section ul li a:hover { color: #fff; }
+.po-social-icons { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.po-social-icons li { display: flex; align-items: center; gap: 10px; }
+.po-social-icons i { color: #fff; font-size: 18px; width: 20px; }
+.po-footer-bottom { text-align: center; color: #ccc; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.2); font-size: 14px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .po-hamburger { display: block; }
+  .po-nav-menu { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: rgba(0,0,0,.98); flex-direction: column; padding: 100px 30px 30px; gap: 20px; transition: right .4s; }
+  .po-nav-menu.active { right: 0; }
+}
+@media (max-width: 768px) {
+  .po-navbar { padding: 15px 20px; }
+  .po-main { flex-direction: column; width: 95%; max-width: 100%; margin: 120px auto 30px; align-items: center; }
+  .po-section1 { width: 100%; max-width: 450px; }
+  .po-card { height: 70px; width: 70px; font-size: 30px; }
+  .po-section2 { width: 100%; max-width: 450px; min-width: auto; margin-left: 0; margin-top: 20px; border-radius: 8px; }
+  .po-footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .po-section1 { max-width: 350px; padding: 5px; }
+  .po-card { height: 60px; width: 60px; font-size: 25px; }
+  .po-section1 h1 { font-size: 24px; }
+  .po-section2 { max-width: 350px; }
+  .po-stat { min-height: 70px; font-size: 15px; }
+}
+@media (max-width: 400px) {
+  .po-card { height: 50px; width: 50px; }
+  .po-section1 h1 { font-size: 20px; }
+}

@@ -1,0 +1,287 @@
+/* ============================================================
+   Entretenimiento.css — prefijo en- para evitar conflictos
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+.en-page * { box-sizing: border-box; padding: 0; margin: 0; }
+.en-page {
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+.en-navbar {
+  position: fixed; top: 0; width: 100%;
+  padding: 20px 50px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: transparent; transition: .3s; z-index: 1000;
+}
+.en-navbar.scrolled { background: rgba(0,0,0,.72); backdrop-filter: blur(8px); }
+
+.en-logo-nav img { height: 70px; width: auto; }
+
+.en-nav-menu { display: flex; gap: 30px; list-style: none; }
+.en-nav-menu li a {
+  color: #fff; text-decoration: none; font-size: 16px; font-weight: 500;
+  position: relative; transition: color .3s;
+}
+.en-nav-menu li a::after {
+  content: ''; position: absolute; bottom: -5px; left: 0;
+  height: 2px; width: 100%; background: #fff;
+  transform: scaleX(0); transform-origin: left; transition: transform .3s;
+}
+.en-nav-menu li a:hover::after { transform: scaleX(1); }
+
+.en-nav-actions { display: flex; align-items: center; gap: 15px; }
+.en-nav-icon { color: #fff; text-decoration: none; }
+.en-nav-icon i { font-size: 24px; color: #fff; }
+
+/* User menu */
+.en-user-menu { position: relative; }
+.en-profile-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  overflow: hidden; cursor: pointer; border: 2px solid #fff;
+}
+.en-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.en-dropdown {
+  position: absolute; top: 50px; right: 0; min-width: 200px;
+  background: rgba(20,20,20,.97); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px; padding: 8px 0; z-index: 2000;
+  backdrop-filter: blur(10px); animation: enDropIn .2s ease;
+}
+@keyframes enDropIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+.en-dropdown a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 18px; color: #fff; text-decoration: none;
+  font-size: 14px; transition: background .2s;
+}
+.en-dropdown a:hover { background: rgba(255,255,255,.1); }
+
+/* Hamburger */
+.en-hamburger { display: none; font-size: 24px; cursor: pointer; color: #fff; z-index: 1100; }
+
+/* ================================================================
+   MODAL
+   ================================================================ */
+.en-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.6);
+  display: flex; align-items: center; justify-content: center; z-index: 9999;
+}
+.en-modal {
+  background: #111; border: 1px solid rgba(255,255,255,.2); border-radius: 12px;
+  padding: 35px 30px; max-width: 400px; width: 90%; position: relative;
+}
+.en-modal h3 { margin-bottom: 12px; font-size: 22px; }
+.en-modal p  { color: #ccc; margin-bottom: 24px; }
+.en-modal-close { position: absolute; top: 14px; right: 18px; font-size: 22px; cursor: pointer; }
+.en-modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+.en-btn-cancel { padding: 10px 20px; background: transparent; border: 1px solid #fff; color: #fff; border-radius: 8px; cursor: pointer; }
+.en-btn-logout { padding: 10px 20px; background: #c0392b; border: none; color: #fff; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.en-hero {
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  height: 100vh; width: 100%; overflow: hidden; color: #fff;
+}
+.en-hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 200px;
+  background: linear-gradient(to top, #000 20%, transparent);
+  z-index: 1;
+}
+.en-header-image {
+  position: absolute; top: 0; left: 0;
+  height: 100%; width: 100%;
+  object-fit: cover; opacity: .3; z-index: -1;
+}
+.en-location-text {
+  position: relative; z-index: 2;
+  max-width: 900px; padding: 20px; margin: 0 auto;
+}
+.en-location-text h1 {
+  font-size: 3.5rem; margin-bottom: 10px; font-weight: 700; letter-spacing: 2px;
+}
+.en-header-line {
+  width: 450px; height: 2px; background: #fff; margin: 10px auto 30px;
+}
+.en-location-text p { font-size: 1.5rem; line-height: 1.6; }
+
+.en-down { text-align: center; font-size: 4rem; padding: 10px; position: relative; z-index: 2; }
+.en-down i { color: #fff; animation: enBounce 1.5s infinite; }
+@keyframes enBounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(10px); }
+}
+
+/* ================================================================
+   CARDS DE JUEGOS
+   ================================================================ */
+.en-card-container {
+  display: flex; justify-content: center;
+  align-items: stretch; flex-wrap: wrap;
+  gap: 3rem; padding: 4rem 2rem;
+  background-color: #000;
+  background-image: url('/img/entretenimiento/image_367.png');
+  background-size: 80%;
+}
+
+.en-card {
+  background: transparent; color: #fff;
+  text-align: left; border-radius: 10px; overflow: hidden;
+  width: 300px; padding: 1rem;
+  border: solid rgba(255,255,255,.278);
+  border-top: transparent; border-bottom: transparent;
+  transition: transform .3s ease;
+  min-height: 600px;
+  display: flex; flex-direction: column;
+}
+.en-card:hover { transform: translateY(-10px); }
+
+.en-card img { width: 100%; border-radius: 10px; }
+.en-card h3 { font-size: 1.7em; margin-top: .5em; }
+.en-card hr  { margin: 1em 0; border-color: rgba(255,255,255,.2); }
+.en-card p   { font-size: 1.1em; flex-grow: 1; line-height: 1.5; }
+
+.en-card button {
+  margin-top: auto; padding: .5rem 1.5rem;
+  border: none; background: #fff; color: #000;
+  font-weight: bold; border-radius: 5px;
+  cursor: pointer; transition: .3s; font-size: 1em;
+}
+.en-card button:hover { background: #ccc; }
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.en-footer {
+  background-color: #0a0a0a;
+  background-image: url('/img/home/fondo_footer.png');
+  background-repeat: no-repeat; background-position: center 100px; background-size: 85%;
+  color: #fff; padding: 50px 0 20px; position: relative; z-index: 1; overflow: hidden;
+}
+.en-footer::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.95); z-index: -1; }
+.en-footer-content { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+.en-logo-section { text-align: center; margin-bottom: 50px; position: relative; }
+.en-linea-horizontal { position: absolute; top: 50%; width: 100%; height: 1px; background: rgba(255,255,255,.3); z-index: 0; }
+.en-logo-footer { width: 140px; height: 140px; margin: 0 auto; border-radius: 50%; background: #000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,.5); position: relative; z-index: 1; }
+.en-logo-footer img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+
+.en-footer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 40px; padding: 0 20px; }
+.en-footer-section { text-align: center; }
+.en-footer-section h3 { color: #fff; margin-bottom: 20px; font-size: 20px; font-weight: 600; border-bottom: 2px solid #fff; display: inline-block; padding-bottom: 8px; }
+.en-footer-section ul { list-style: none; padding: 0; margin: 0; }
+.en-footer-section ul li { color: #ccc; margin-bottom: 12px; font-size: 15px; line-height: 1.6; }
+.en-footer-section ul li a { text-decoration: none; color: #ccc; transition: color .3s; }
+.en-footer-section ul li a:hover { color: #fff; }
+
+.en-social-icons { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.en-social-icons li { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.en-social-icons i  { color: #fff; font-size: 18px; width: 20px; }
+
+.en-footer-bottom { text-align: center; color: #ccc; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.2); font-size: 14px; }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .en-location-text h1 { font-size: 2.8rem; }
+  .en-location-text p  { font-size: 1.2rem; }
+  .en-header-line { width: 350px; }
+  .en-card-container { gap: 2rem; padding: 3rem 1.5rem; }
+  .en-card { width: 280px; min-height: 580px; }
+  .en-card h3 { font-size: 1.5em; }
+  .en-card p  { font-size: 1em; }
+  .en-footer-grid { grid-template-columns: repeat(2,1fr); }
+  .en-footer-section:last-child { grid-column: 1/-1; }
+  .en-logo-footer { width: 120px; height: 120px; }
+}
+
+@media (max-width: 900px) {
+  .en-hamburger { display: block; }
+  .en-nav-menu {
+    position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+    background: rgba(0,0,0,.98); backdrop-filter: blur(10px);
+    flex-direction: column; padding: 100px 30px 30px; gap: 20px;
+    transition: right .4s cubic-bezier(.68,-.55,.265,1.55);
+    overflow-y: auto; box-shadow: -5px 0 15px rgba(0,0,0,.5);
+  }
+  .en-nav-menu.active { right: 0; }
+  .en-nav-menu li a { font-size: 18px; padding: 12px 0; display: block; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .en-nav-menu li a::after { display: none; }
+}
+
+@media (max-width: 768px) {
+  .en-navbar { padding: 15px 25px; }
+  .en-logo-nav img { height: 60px; }
+  .en-hero { min-height: 70vh; height: auto; padding: 120px 20px 40px; }
+  .en-location-text h1 { font-size: 2rem; line-height: 1.2; }
+  .en-header-line { width: 250px; margin: 15px auto 20px; }
+  .en-location-text p { font-size: .95rem; }
+  .en-location-text p br { display: none; }
+  .en-down { font-size: 3rem; padding: 20px 10px 10px; }
+  .en-card-container { gap: 2.5rem; padding: 3rem 1rem; background-size: 100%; }
+  .en-card { width: 90%; max-width: 350px; min-height: auto; padding: 1.5rem; margin: 0 auto; }
+  .en-card img { max-height: 250px; object-fit: cover; }
+  .en-card h3 { font-size: 1.6em; margin-top: 1rem; }
+  .en-card p  { font-size: 1rem; }
+  .en-card button { margin-top: 1.5rem; width: 100%; padding: .7rem 2rem; font-size: 1.1em; }
+  .en-footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .en-footer-section { text-align: center; }
+  .en-logo-footer,.en-logo-footer img { width: 130px; height: 130px; }
+}
+
+@media (max-width: 480px) {
+  .en-navbar { padding: 15px 20px; }
+  .en-logo-nav img { height: 50px; }
+  .en-hero { min-height: 65vh; padding: 100px 15px 30px; }
+  .en-location-text h1 { font-size: 1.7rem; }
+  .en-header-line { width: 200px; margin: 12px auto 18px; }
+  .en-location-text p { font-size: .85rem; }
+  .en-down { font-size: 2.5rem; }
+  .en-card-container { gap: 2rem; padding: 2.5rem .8rem; background-size: 120%; }
+  .en-card { width: 95%; max-width: 320px; padding: 1.2rem; }
+  .en-card img { max-height: 220px; border-radius: 8px; }
+  .en-card h3 { font-size: 1.4em; }
+  .en-card p  { font-size: .95rem; }
+  .en-card button { margin-top: 1.3rem; padding: .6rem 1.8rem; font-size: 1em; width: 100%; }
+  .en-footer { padding: 25px 0 15px; background-size: 100%; }
+  .en-footer-content { padding: 10px 20px; }
+  .en-logo-footer,.en-logo-footer img { width: 90px; height: 90px; }
+  .en-footer-section h3 { font-size: 16px; }
+  .en-footer-section ul li { font-size: 13px; }
+  .en-footer-bottom { font-size: 12px; margin-top: 15px; }
+}
+
+@media (max-width: 360px) {
+  .en-location-text h1 { font-size: 1.5rem; }
+  .en-header-line { width: 170px; }
+  .en-location-text p { font-size: .8rem; }
+  .en-down { font-size: 2rem; }
+  .en-card { width: 98%; max-width: 280px; padding: 1rem; }
+  .en-card img { max-height: 200px; }
+  .en-card h3 { font-size: 1.3em; }
+  .en-card p  { font-size: .9rem; }
+  .en-logo-footer { width: 80px; height: 80px; }
+  .en-footer-section h3 { font-size: 14px; }
+  .en-footer-section ul li { font-size: 12px; }
+  .en-footer-bottom { font-size: 11px; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .en-hero { min-height: auto; padding: 80px 20px 20px; }
+  .en-location-text h1 { font-size: 1.8rem; }
+  .en-location-text p  { font-size: .85rem; line-height: 1.4; }
+  .en-down { font-size: 2rem; padding: 10px; }
+}
